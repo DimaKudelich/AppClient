@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kudelich.testclient">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/bsu"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".integraterecycler.Login"
+            android:label="Авторизация">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".integraterecycler.Profile"
+            android:label="Профиль" />
+        <activity
+            android:name=".integraterecycler.MySchedule"
+            android:label="Моё расписание" />
+        <activity
+            android:name=".integraterecycler.Schedule"
+            android:label="Расписание"
+            android:parentActivityName=".integraterecycler.Groups" />
+        <activity
+            android:name=".integraterecycler.Groups"
+            android:label="Группа"
+            android:parentActivityName=".integraterecycler.Courses" />
+        <activity
+            android:name=".integraterecycler.Courses"
+            android:label="Курс"
+            android:parentActivityName=".integraterecycler.Faculties" />
+        <activity
+            android:name=".integraterecycler.Faculties"
+            android:label="Факультет" />
+        <activity
+            android:name=".Schedule"
+            android:label="Расписания занятий" />
+        <activity
+            android:name=".MySchedule"
+            android:label="Мое расписание" />
+        <activity
+            android:name=".Profile"
+            android:label="Мой профиль" />
+        <activity
+            android:name=".MainActivity"
+            android:label="BSU">
+
+        </activity>
+    </application>
+
+</manifest>

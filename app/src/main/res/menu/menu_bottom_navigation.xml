@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Расписания"
+        android:id="@+id/action_schedule"
+        android:icon="@mipmap/ic_launcher"
+        />
+    <item
+        android:title="Мое расписание"
+        android:id="@+id/action_my_schedule"
+        android:icon="@mipmap/ic_launcher"
+        />
+    <item
+        android:title="Профиль"
+        android:id="@+id/action_profile"
+        android:icon="@mipmap/ic_launcher"
+        />
+</menu>

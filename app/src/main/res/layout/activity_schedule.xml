@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mySchedule"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Мое расписание"/>
+
+        <Button
+            android:id="@+id/myProfile"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Профиль" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/scheduleData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/chooseId"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/backToLast"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Назад"/>
+        <Button
+            android:id="@+id/enterId"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Выберите id"/>
+    </LinearLayout>
+
+</LinearLayout>
