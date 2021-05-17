@@ -2,6 +2,8 @@ package com.kudelich.testclient.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -75,6 +77,8 @@ public class Profile extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+        bottomNavigationView.findViewById(R.id.action_profile).setEnabled(false);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

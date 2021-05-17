@@ -54,6 +54,7 @@ public class Schedule extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+        bottomNavigationView.findViewById(R.id.action_schedule).setEnabled(false);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

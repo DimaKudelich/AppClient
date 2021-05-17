@@ -7,19 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/bsu"
-        android:label="@string/app_name"
+        android:label="BSU"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.Login"
-            android:label="Авторизация">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.Profile"
             android:label="Профиль" />
@@ -41,6 +34,13 @@
         <activity
             android:name=".activities.Faculties"
             android:label="Факультет" />
+        <activity android:name=".activities.Login"
+            android:label="BSU">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
