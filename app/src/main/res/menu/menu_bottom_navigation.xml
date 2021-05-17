@@ -3,16 +3,16 @@
     <item
         android:title="Расписания"
         android:id="@+id/action_schedule"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_schedule"
         />
     <item
         android:title="Мое расписание"
         android:id="@+id/action_my_schedule"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_my_schedule"
         />
     <item
         android:title="Профиль"
         android:id="@+id/action_profile"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_profile"
         />
 </menu>

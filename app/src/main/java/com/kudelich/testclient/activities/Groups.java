@@ -1,19 +1,21 @@
-package com.kudelich.testclient.integraterecycler;
+package com.kudelich.testclient.activities;
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kudelich.testclient.R;
-import com.kudelich.testclient.strings.Strings;
 import com.kudelich.testclient.adapters.SearchAdapter;
 import com.kudelich.testclient.dto.GroupsDTO;
+import com.kudelich.testclient.strings.Strings;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -32,7 +34,7 @@ public class Groups extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
+        setContentView(R.layout.recycler_layout);
         recyclerView = findViewById(R.id.list);
 
         Long info = getIntent().getLongExtra(extraAddress,0);
@@ -54,6 +56,26 @@ public class Groups extends AppCompatActivity {
         SearchAdapter searchAdapter = new SearchAdapter(this, objects, extraPut,allId, Schedule.class);
         recyclerView.setAdapter(searchAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_schedule:
+                        break;
+                    case R.id.action_my_schedule:
+                        startActivity(new Intent(Groups.this, MySchedule.class));
+                        finish();
+                        break;
+                    case R.id.action_profile:
+                        startActivity(new Intent(Groups.this, Profile.class));
+                        finish();
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

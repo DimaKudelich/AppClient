@@ -1,4 +1,4 @@
-package com.kudelich.testclient.integraterecycler;
+package com.kudelich.testclient.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_login);
+        setContentView(R.layout.login_layout);
 
         preferences = getSharedPreferences(SAVED_ID, MODE_PRIVATE);
         long savedId = preferences.getLong(SAVED_ID, 0);

@@ -7,6 +7,8 @@ public class ClassesDTO {
     private int dayOfWeek;
     private char type;
     private long groupId;
+    private String startTime;
+    private String endTime;
 
     public ClassesDTO(){
 
@@ -60,6 +62,22 @@ public class ClassesDTO {
         this.groupId = groupId;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
     public static String classesToString(ClassesDTO[]classesDTOS){
         String result = new String();
 
@@ -74,7 +92,7 @@ public class ClassesDTO {
     }
 
     public static String[][]classesToStringArray(ClassesDTO[]classesDTOS){
-        String[][]result = new String[classesDTOS.length][4];
+        String[][]result = new String[classesDTOS.length][6];
         String[]days = {"Пнд.","Втр.","Срд.","Чтв.","Птн.","Сбт.",};
 
         for (int i = 0; i < classesDTOS.length; i++) {
@@ -82,6 +100,8 @@ public class ClassesDTO {
             result[i][1] = classesDTOS[i].getSubject();
             result[i][2] =Character.toString(classesDTOS[i].getType());
             result[i][3] =classesDTOS[i].getClassroom();
+            result[i][4] = classesDTOS[i].getStartTime();
+            result[i][5] = classesDTOS[i].getEndTime();
         }
 
 

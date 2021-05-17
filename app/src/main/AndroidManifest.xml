@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".integraterecycler.Login"
+        <activity android:name=".activities.Login"
             android:label="Авторизация">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,40 +21,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".integraterecycler.Profile"
+            android:name=".activities.Profile"
             android:label="Профиль" />
         <activity
-            android:name=".integraterecycler.MySchedule"
+            android:name=".activities.MySchedule"
             android:label="Моё расписание" />
         <activity
-            android:name=".integraterecycler.Schedule"
+            android:name=".activities.Schedule"
             android:label="Расписание"
-            android:parentActivityName=".integraterecycler.Groups" />
+            android:parentActivityName=".activities.Groups" />
         <activity
-            android:name=".integraterecycler.Groups"
+            android:name=".activities.Groups"
             android:label="Группа"
-            android:parentActivityName=".integraterecycler.Courses" />
+            android:parentActivityName=".activities.Courses" />
         <activity
-            android:name=".integraterecycler.Courses"
+            android:name=".activities.Courses"
             android:label="Курс"
-            android:parentActivityName=".integraterecycler.Faculties" />
+            android:parentActivityName=".activities.Faculties" />
         <activity
-            android:name=".integraterecycler.Faculties"
+            android:name=".activities.Faculties"
             android:label="Факультет" />
-        <activity
-            android:name=".Schedule"
-            android:label="Расписания занятий" />
-        <activity
-            android:name=".MySchedule"
-            android:label="Мое расписание" />
-        <activity
-            android:name=".Profile"
-            android:label="Мой профиль" />
-        <activity
-            android:name=".MainActivity"
-            android:label="BSU">
-
-        </activity>
     </application>
 
 </manifest>

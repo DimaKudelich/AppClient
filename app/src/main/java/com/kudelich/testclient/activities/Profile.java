@@ -1,7 +1,4 @@
-package com.kudelich.testclient.integraterecycler;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.kudelich.testclient.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kudelich.testclient.R;
@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_profile);
+        setContentView(R.layout.profile_layout);
 
         name = findViewById(R.id.name);
         faculty = findViewById(R.id.faculty);

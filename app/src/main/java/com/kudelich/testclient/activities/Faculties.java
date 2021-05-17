@@ -1,9 +1,4 @@
-package com.kudelich.testclient.integraterecycler;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.kudelich.testclient.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,12 +6,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.kudelich.testclient.Profile;
 import com.kudelich.testclient.R;
+import com.kudelich.testclient.adapters.SearchAdapter;
+import com.kudelich.testclient.dto.FacultiesDTO;
 import com.kudelich.testclient.strings.Strings;
-import com.kudelich.testclient.adapters.ScheduleAdapter;
-import com.kudelich.testclient.dto.ClassesDTO;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -24,34 +23,35 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.ExecutionException;
 
-public class Schedule extends AppCompatActivity {
-    String extraAddress = "group_id";
-    ClassesDTO[]classesDTOS;
+public class Faculties extends AppCompatActivity {
+    String[] objects;
     RecyclerView recyclerView;
+    String extraAddress = "faculty_id";
+    FacultiesDTO[]facultiesDTOS;
+    long[]allId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
-
-        Long info = getIntent().getLongExtra(extraAddress,0);
+        setContentView(R.layout.recycler_layout);
         recyclerView = findViewById(R.id.list);
 
         HttpRequestTask task = new HttpRequestTask();
-        task.setUrl(Strings.HOST+"/faculties/courses/groups/schedule/"+Long.toString(info));
+        task.setUrl(Strings.HOST+"/faculties/get");
 
         try {
-            classesDTOS =  task.execute().get();
+             facultiesDTOS =  task.execute().get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        String[][]classes = ClassesDTO.classesToStringArray(classesDTOS);
+        objects = FacultiesDTO.convertToStringArray(facultiesDTOS);
+        allId = FacultiesDTO.getAllId(facultiesDTOS);
 
-        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this,classes);
-        recyclerView.setAdapter(scheduleAdapter);
+        SearchAdapter searchAdapter = new SearchAdapter(this, objects, extraAddress,allId, Courses.class);
+        recyclerView.setAdapter(searchAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
@@ -62,11 +62,11 @@ public class Schedule extends AppCompatActivity {
                     case R.id.action_schedule:
                         break;
                     case R.id.action_my_schedule:
-                        startActivity(new Intent(Schedule.this, MySchedule.class));
+                        startActivity(new Intent(Faculties.this, MySchedule.class));
                         finish();
                         break;
                     case R.id.action_profile:
-                        startActivity(new Intent(Schedule.this, Profile.class));
+                        startActivity(new Intent(Faculties.this, Profile.class));
                         finish();
                         break;
                 }
@@ -75,21 +75,21 @@ public class Schedule extends AppCompatActivity {
         });
     }
 
-    private class HttpRequestTask extends AsyncTask<Void,Void, ClassesDTO[]> {
+    private class HttpRequestTask extends AsyncTask<Void,Void, FacultiesDTO[]> {
         private String url;
-        ClassesDTO[]facultiesDTOS;
+        FacultiesDTO[]facultiesDTOS;
 
         public void setUrl(String url) {
             this.url = url;
         }
 
         @Override
-        protected ClassesDTO[] doInBackground(Void... voids) {
+        protected FacultiesDTO[] doInBackground(Void... voids) {
             try {
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
-                ResponseEntity<ClassesDTO[]> responseEntity = restTemplate.getForEntity(url,ClassesDTO[].class);
+                ResponseEntity<FacultiesDTO[]> responseEntity = restTemplate.getForEntity(url,FacultiesDTO[].class);
                 facultiesDTOS = responseEntity.getBody();
 
                 return facultiesDTOS;
@@ -100,19 +100,7 @@ public class Schedule extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(ClassesDTO[] result) {
+        protected void onPostExecute(FacultiesDTO[] result) {
         }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

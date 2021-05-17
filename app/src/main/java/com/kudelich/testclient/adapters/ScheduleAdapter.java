@@ -35,6 +35,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Custom
         holder.subject.setText(classes[position][1]);
         holder.type.setText(classes[position][2]);
         holder.classroom.setText(classes[position][3]);
+        holder.startTime.setText(classes[position][5]+" -");
+        holder.endTime.setText(classes[position][4]);
     }
 
     @Override
@@ -48,6 +50,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Custom
         TextView subject;
         TextView type;
         TextView classroom;
+        TextView startTime;
+        TextView endTime;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +60,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Custom
             subject = itemView.findViewById(R.id.subject);
             type = itemView.findViewById(R.id.type);
             classroom = itemView.findViewById(R.id.classroom);
+            startTime = itemView.findViewById(R.id.startTime);
+            endTime = itemView.findViewById(R.id.endTime);
         }
     }
 }

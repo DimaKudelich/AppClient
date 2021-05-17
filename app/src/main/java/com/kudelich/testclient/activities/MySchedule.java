@@ -1,9 +1,4 @@
-package com.kudelich.testclient.integraterecycler;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.kudelich.testclient.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kudelich.testclient.R;
-import com.kudelich.testclient.strings.Strings;
 import com.kudelich.testclient.adapters.ScheduleAdapter;
 import com.kudelich.testclient.dto.ClassesDTO;
+import com.kudelich.testclient.strings.Strings;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -33,7 +33,7 @@ public class MySchedule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
+        setContentView(R.layout.recycler_layout);
         recyclerView = findViewById(R.id.list);
 
         preferences = getSharedPreferences(SAVED_ID, MODE_PRIVATE);
@@ -50,11 +50,11 @@ public class MySchedule extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //String[][]classes = ClassesDTO.classesToStringArray(classesDTOS);
+        String[][]classes = ClassesDTO.classesToStringArray(classesDTOS);
 
-//        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this,classes);
-//        recyclerView.setAdapter(scheduleAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this,classes);
+        recyclerView.setAdapter(scheduleAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -96,7 +96,7 @@ public class MySchedule extends AppCompatActivity {
 
                 return facultiesDTOS;
             } catch (Exception e) {
-                Log.e("Schedule activity error", e.getMessage(), e);
+                Log.e("MySchedule error", e.getMessage(), e);
             }
             return null;
         }
